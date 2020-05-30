@@ -1,0 +1,35 @@
+{
+  "containerDefinitions": [
+    {
+      "cpu": 0,
+      "dnsSearchDomains": null,
+      "essential": true,
+      "image": "nginx:latest",
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/webserver-fargate",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "memoryReservation": 300,
+      "name": "nginx",
+      "portMappings": [
+        {
+          "containerPort": 80
+        }
+      ]
+    }
+  ],
+  "cpu": "256",
+  "executionRoleArn": "arn:aws:iam::aws_account_id:role/ecsTaskExecutionRole",
+  "family": "webserver-fargate",
+  "memory": "512",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "volumes": [
+  ]
+}

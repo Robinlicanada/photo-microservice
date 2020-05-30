@@ -1,0 +1,27 @@
+{
+  "family": "photo-filter",
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "memory": "512",
+  "cpu": "256",
+  "containerDefinitions": [
+    {
+      "name": "photo-filter",
+      "image": "YOUR_ACCOUNT_ID_HERE.dkr.ecr.us-east-1.amazonaws.com/photo-filter:latest",
+      "portMappings": [
+        {
+          "containerPort": 3002
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "production-service-photo-filter",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "photo-filter"
+        }
+      }
+    }
+  ]
+}
